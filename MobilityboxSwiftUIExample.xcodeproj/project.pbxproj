@@ -14,6 +14,11 @@
 		27122B9C2865A179000FC128 /* MobilityboxSwiftUIExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122B9B2865A179000FC128 /* MobilityboxSwiftUIExampleTests.swift */; };
 		27122BA62865A179000FC128 /* MobilityboxSwiftUIExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BA52865A179000FC128 /* MobilityboxSwiftUIExampleUITests.swift */; };
 		27122BA82865A179000FC128 /* MobilityboxSwiftUIExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BA72865A179000FC128 /* MobilityboxSwiftUIExampleUITestsLaunchTests.swift */; };
+		27122BB52865C775000FC128 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BB42865C775000FC128 /* ViewModel.swift */; };
+		27122BB82865CAD8000FC128 /* Mobilitybox in Frameworks */ = {isa = PBXBuildFile; productRef = 27122BB72865CAD8000FC128 /* Mobilitybox */; };
+		27122BBA2865D39A000FC128 /* AddCouponCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BB92865D39A000FC128 /* AddCouponCodeView.swift */; };
+		27122BBC2865F4D9000FC128 /* CouponCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BBB2865F4D9000FC128 /* CouponCardView.swift */; };
+		27122BBE2865F52D000FC128 /* TicketCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BBD2865F52D000FC128 /* TicketCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,10 @@
 		27122BA12865A179000FC128 /* MobilityboxSwiftUIExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobilityboxSwiftUIExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27122BA52865A179000FC128 /* MobilityboxSwiftUIExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityboxSwiftUIExampleUITests.swift; sourceTree = "<group>"; };
 		27122BA72865A179000FC128 /* MobilityboxSwiftUIExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityboxSwiftUIExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		27122BB42865C775000FC128 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		27122BB92865D39A000FC128 /* AddCouponCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCouponCodeView.swift; sourceTree = "<group>"; };
+		27122BBB2865F4D9000FC128 /* CouponCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCardView.swift; sourceTree = "<group>"; };
+		27122BBD2865F52D000FC128 /* TicketCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27122BB82865CAD8000FC128 /* Mobilitybox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +106,10 @@
 			children = (
 				27122B8A2865A177000FC128 /* MobilityboxSwiftUIExampleApp.swift */,
 				27122B8C2865A177000FC128 /* ContentView.swift */,
+				27122BB42865C775000FC128 /* ViewModel.swift */,
+				27122BB92865D39A000FC128 /* AddCouponCodeView.swift */,
+				27122BBB2865F4D9000FC128 /* CouponCardView.swift */,
+				27122BBD2865F52D000FC128 /* TicketCardView.swift */,
 				27122B8E2865A179000FC128 /* Assets.xcassets */,
 				27122B902865A179000FC128 /* Preview Content */,
 			);
@@ -143,6 +157,9 @@
 			dependencies = (
 			);
 			name = MobilityboxSwiftUIExample;
+			packageProductDependencies = (
+				27122BB72865CAD8000FC128 /* Mobilitybox */,
+			);
 			productName = MobilityboxSwiftUIExample;
 			productReference = 27122B872865A177000FC128 /* MobilityboxSwiftUIExample.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +232,9 @@
 				Base,
 			);
 			mainGroup = 27122B7E2865A177000FC128;
+			packageReferences = (
+				27122BB62865CAD8000FC128 /* XCRemoteSwiftPackageReference "mobilitybox-ios-sdk" */,
+			);
 			productRefGroup = 27122B882865A177000FC128 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,6 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27122B8D2865A177000FC128 /* ContentView.swift in Sources */,
+				27122BB52865C775000FC128 /* ViewModel.swift in Sources */,
+				27122BBE2865F52D000FC128 /* TicketCardView.swift in Sources */,
+				27122BBA2865D39A000FC128 /* AddCouponCodeView.swift in Sources */,
+				27122BBC2865F4D9000FC128 /* CouponCardView.swift in Sources */,
 				27122B8B2865A177000FC128 /* MobilityboxSwiftUIExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +607,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27122BB62865CAD8000FC128 /* XCRemoteSwiftPackageReference "mobilitybox-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "file:///Users/timk/Arbeit/mobilitybox-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27122BB72865CAD8000FC128 /* Mobilitybox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27122BB62865CAD8000FC128 /* XCRemoteSwiftPackageReference "mobilitybox-ios-sdk" */;
+			productName = Mobilitybox;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 27122B7F2865A177000FC128 /* Project object */;
 }

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "mobilitybox-ticketing-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/themobilitybox/mobilitybox-ticketing-ios.git",
+      "state" : {
+        "revision" : "d3917fba61a8a553cfd71bf80ad58ff57bb32a53",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
