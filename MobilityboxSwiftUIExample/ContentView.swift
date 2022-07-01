@@ -30,6 +30,7 @@ struct ContentView: View {
                         .listRowSeparator(.hidden)
                     }
                 }
+                .listStyle(.plain)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -50,7 +51,6 @@ struct ContentView: View {
                     }
                 }
             }
-            
         }.onAppear {
             self.viewModel.loadAllData {}
         }

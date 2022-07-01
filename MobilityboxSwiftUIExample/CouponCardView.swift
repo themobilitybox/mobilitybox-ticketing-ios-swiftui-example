@@ -3,7 +3,6 @@ import Mobilitybox
 
 struct CouponCardView: View {
     @Binding var coupon: MobilityboxCoupon
-    @State var showIdentificationView = false
     var activateCouponCallback: ((MobilityboxCoupon, MobilityboxTicketCode) -> Void)
     
     @State var showDestinationView = false
@@ -13,6 +12,6 @@ struct CouponCardView: View {
             MobilityboxCardView(coupon: $coupon)
         } navigationDestination: {
             MobilityboxIdentificationView(coupon: $coupon, activateCouponCallback: activateCouponCallback)
-        }
+        }.disabled(coupon.activated)
     }
 }
