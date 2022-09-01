@@ -18,7 +18,7 @@
 		27122BBA2865D39A000FC128 /* AddCouponCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BB92865D39A000FC128 /* AddCouponCodeView.swift */; };
 		27122BBC2865F4D9000FC128 /* CouponCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BBB2865F4D9000FC128 /* CouponCardView.swift */; };
 		27122BBE2865F52D000FC128 /* TicketCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27122BBD2865F52D000FC128 /* TicketCardView.swift */; };
-		EE1A160A286F6A73000EA671 /* Mobilitybox in Frameworks */ = {isa = PBXBuildFile; productRef = EE1A1609286F6A73000EA671 /* Mobilitybox */; };
+		277009B828C0EFFE001EBE6A /* Mobilitybox in Frameworks */ = {isa = PBXBuildFile; productRef = 277009B728C0EFFE001EBE6A /* Mobilitybox */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE1A160A286F6A73000EA671 /* Mobilitybox in Frameworks */,
+				277009B828C0EFFE001EBE6A /* Mobilitybox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +166,7 @@
 			);
 			name = MobilityboxSwiftUIExample;
 			packageProductDependencies = (
-				EE1A1609286F6A73000EA671 /* Mobilitybox */,
+				277009B728C0EFFE001EBE6A /* Mobilitybox */,
 			);
 			productName = MobilityboxSwiftUIExample;
 			productReference = 27122B872865A177000FC128 /* MobilityboxSwiftUIExample.app */;
@@ -241,7 +241,7 @@
 			);
 			mainGroup = 27122B7E2865A177000FC128;
 			packageReferences = (
-				EEAE6191286F687E007B7E12 /* XCRemoteSwiftPackageReference "mobilitybox-ticketing-ios" */,
+				277009B628C0EFFE001EBE6A /* XCRemoteSwiftPackageReference "mobilitybox-ticketing-ios" */,
 			);
 			productRefGroup = 27122B882865A177000FC128 /* Products */;
 			projectDirPath = "";
@@ -617,20 +617,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EEAE6191286F687E007B7E12 /* XCRemoteSwiftPackageReference "mobilitybox-ticketing-ios" */ = {
+		277009B628C0EFFE001EBE6A /* XCRemoteSwiftPackageReference "mobilitybox-ticketing-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/themobilitybox/mobilitybox-ticketing-ios";
+			repositoryURL = "https://github.com/themobilitybox/mobilitybox-ticketing-ios.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EE1A1609286F6A73000EA671 /* Mobilitybox */ = {
+		277009B728C0EFFE001EBE6A /* Mobilitybox */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EEAE6191286F687E007B7E12 /* XCRemoteSwiftPackageReference "mobilitybox-ticketing-ios" */;
+			package = 277009B628C0EFFE001EBE6A /* XCRemoteSwiftPackageReference "mobilitybox-ticketing-ios" */;
 			productName = Mobilitybox;
 		};
 /* End XCSwiftPackageProductDependency section */

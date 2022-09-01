@@ -12,6 +12,7 @@ struct CouponCardView: View {
             MobilityboxCardView(coupon: $coupon)
         } navigationDestination: {
             MobilityboxIdentificationView(coupon: $coupon, activateCouponCallback: activateCouponCallback)
+                .navigationBarTitleDisplayMode(.inline)
         }.disabled(coupon.activated)
     }
 }

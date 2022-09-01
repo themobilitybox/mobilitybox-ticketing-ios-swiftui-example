@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import Mobilitybox
 
 @main
 struct MobilityboxSwiftUIExampleApp: App {
+    
+    init() {
+        Mobilitybox.setup(apiConfig: MobilityboxAPI.Config(apiURL: "https://api.themobilitybox.com/v2"))
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

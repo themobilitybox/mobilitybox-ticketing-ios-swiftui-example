@@ -55,12 +55,6 @@ class TicketElement: Equatable {
 
 class ViewModel: ObservableObject {
     @Published var ticketElements = [TicketElement]()
-    @Published var mobilityboxAPI = MobilityboxAPI(apiURL: "https://api-alpha.themobilitybox.com/v2", renderEngineURL: "https://ticket-rendering-engine-alpha.themobilitybox.com")
-    @Published var renderEngine: MobilityboxTicketRenderingEngine!
-    
-    init() {
-        self.renderEngine = MobilityboxTicketRenderingEngine(mobilityboxAPI: self.mobilityboxAPI)
-    }
     
     func addElement(element: TicketElement, atIndex: Int?) {
         if atIndex != nil {
@@ -164,6 +158,10 @@ class ViewModel: ObservableObject {
                             self.replaceCouponCodeWithCoupon(couponCode: couponCode, coupon: coupon)
                             if completion != nil { completion!() }
                         }
+                    } onFailure: { error in
+                        DispatchQueue.main.async {
+                            let _ = self.removeCouponCode(couponCode: couponCode)
+                        }
                     }
                 })
                 return
@@ -222,6 +220,26 @@ class ViewModel: ObservableObject {
         UserDefaults.standard.removeObject(forKey: "savedTickets")
     }
     
+    func removeTicketElement(ticketElementId: String) {
+        if let element = ticketElements.first(where: { ticketElement in
+            return ticketElement.id == ticketElementId
+        }) {
+            let _: Int? = { switch element.type {
+            case "MobilityboxCouponCode":
+                return self.removeCouponCode(couponCode: element.couponCode!)
+            case "MobilityboxCoupon":
+                return self.removeCoupon(coupon: element.coupon!)
+            case "MobilityboxTicketCode":
+                return self.removeTicketCode(ticketCode: element.ticketCode!)
+            case "MobilityboxTicket":
+                return self.removeTicket(ticket: element.ticket!)
+            default:
+                puts("unkown tickelement type to remove")
+                return nil
+            }}()
+        }
+    }
+    
     func removeCouponCode(couponCode: MobilityboxCouponCode) -> Int? {
         if let index = ticketElements.firstIndex(where: { ticketElement in
             return ticketElement.type == "MobilityboxCouponCode" && ticketElement.couponCode! == couponCode
@@ -250,6 +268,17 @@ class ViewModel: ObservableObject {
         }) {
             ticketElements.remove(at: index)
             saveAllTicketCodes()
+            return index
+        }
+        return nil
+    }
+    
+    func removeTicket(ticket: MobilityboxTicket) -> Int? {
+        if let index = ticketElements.firstIndex(where: { ticketElement in
+            return ticketElement.type == "MobilityboxTicket" && ticketElement.ticket! == ticket
+        }) {
+            ticketElements.remove(at: index)
+            saveAllTickets()
             return index
         }
         return nil

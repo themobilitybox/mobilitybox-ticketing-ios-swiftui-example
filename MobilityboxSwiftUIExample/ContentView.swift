@@ -5,7 +5,6 @@ struct ContentView: View {
     @StateObject var viewModel = ViewModel()
     @State private var showAddCouponView = false
     
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -20,12 +19,22 @@ struct ContentView: View {
                             case "MobilityboxTicketCode":
                                 MobilityboxCardView()
                             case "MobilityboxTicket":
-                                TicketCardView(ticket: Binding(ticketElement.ticket)!, renderEngine: $viewModel.renderEngine)
+                                TicketCardView(ticket: Binding(ticketElement.ticket)!)
                             default:
                                 EmptyView()
                             }
                         }
-                        .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            Button {
+                                withAnimation {
+                                    self.viewModel.removeTicketElement(ticketElementId: ticketElement.wrappedValue.id)
+                                }
+                            } label: {
+                                Image(systemName: "trash")
+                            }.tint(.red)
+                        }
+                        .compositingGroup()
+                        .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
                         .listRowBackground(Color.white.opacity(0.0))
                         .listRowSeparator(.hidden)
                     }
@@ -57,8 +66,7 @@ struct ContentView: View {
     }
     
     func addCouponIdCallback(couponId: String) {
-        let couponCode = MobilityboxCouponCode(couponId: couponId, mobilityboxAPI: self.viewModel.mobilityboxAPI)
-        
+        let couponCode = MobilityboxCouponCode(couponId: couponId)
         self.viewModel.addCouponCode(couponCode: couponCode)
         
         if let couponCodeIndex = self.viewModel.ticketElements.firstIndex(where: { ticketElement in
@@ -68,10 +76,13 @@ struct ContentView: View {
             print("scroll to item at: \(couponCodeIndex)")
         }
         
-        
         couponCode.fetchCoupon { coupon in
             DispatchQueue.main.async {
                 self.viewModel.replaceCouponCodeWithCoupon(couponCode: couponCode, coupon: coupon)
+            }
+        } onFailure: { error in
+            DispatchQueue.main.async {
+                let _ = self.viewModel.removeCouponCode(couponCode: couponCode)
             }
         }
     }
@@ -79,9 +90,22 @@ struct ContentView: View {
     func activateCouponCallback(coupon: MobilityboxCoupon, ticketCode: MobilityboxTicketCode) {
         self.viewModel.replaceCouponWithTicketCode(coupon: coupon, ticketCode: ticketCode)
         
+        fetchTicketAndReplace(ticketCode: ticketCode)
+    }
+    
+    func fetchTicketAndReplace(ticketCode: MobilityboxTicketCode) {
         ticketCode.fetchTicket { ticket in
             DispatchQueue.main.async {
                 self.viewModel.replaceTicketCodeWithTicket(ticketCode: ticketCode, ticket: ticket)
+            }
+        } onFailure: { error in
+            if error == .retry_later {
+                DispatchQueue.main.async {
+                    Timer.scheduledTimer(withTimeInterval: TimeInterval(2.0), repeats: false){_ in
+                        print("Ticket not available ... retry")
+                        fetchTicketAndReplace(ticketCode: ticketCode)
+                    }
+                }
             }
         }
     }

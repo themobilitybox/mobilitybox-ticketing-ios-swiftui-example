@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/themobilitybox/mobilitybox-ticketing-ios",
       "state" : {
-        "branch" : "main",
-        "revision" : "eb870789d8bae9a75d0086f1e64207942174e9d0"
+        "revision" : "6120b31f6888bbc0c070156e692989a9a53d3c5f",
+        "version" : "1.3.0"
       }
     }
   ],
